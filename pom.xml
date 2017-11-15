@@ -20,27 +20,27 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>com.busyducks</groupId>
-                <artifactId>speakingDuck</artifactId>
-                <version>0.9.0 BETA</version>
-                <configuration>
-                    <call>trans -b :$CALL_LANG $TEXT_ESCAPED_QUOTED</call>
-                    <translations>
-                        <translation>
-                            <bundlePattern>./src/main/resources/non_xml_text_$FILE_LANG.properties</bundlePattern>
-                            <!-- $FILE_LANG:$CALL_LANG -->
-                            <sourceLang>en:en</sourceLang>
-                            <destLangs>de:de, zh:zh, es:es</destLangs>
-                            <replaceExistingKeys>false</replaceExistingKeys>
-                        </translation>
-                    </translations>
-                </configuration>
+            <!--<plugin>-->
+                <!--<groupId>com.busyducks</groupId>-->
+                <!--<artifactId>speakingDuck</artifactId>-->
+                <!--<version>0.9.0 BETA</version>-->
+                <!--<configuration>-->
+                    <!--<call>trans -b :$CALL_LANG $TEXT_ESCAPED_QUOTED</call>-->
+                    <!--<translations>-->
+                        <!--<translation>-->
+                            <!--<bundlePattern>./src/main/resources/non_xml_text_$FILE_LANG.properties</bundlePattern>-->
+                            <!--&lt;!&ndash; $FILE_LANG:$CALL_LANG &ndash;&gt;-->
+                            <!--<sourceLang>en:en</sourceLang>-->
+                            <!--<destLangs>de:de, zh:zh, es:es</destLangs>-->
+                            <!--<replaceExistingKeys>false</replaceExistingKeys>-->
+                        <!--</translation>-->
+                    <!--</translations>-->
+                <!--</configuration>-->
 
-                <executions>
-                    <execution><goals><goal>translate</goal></goals></execution>
-                </executions>
-            </plugin>
+                <!--<executions>-->
+                    <!--<execution><goals><goal>translate</goal></goals></execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 

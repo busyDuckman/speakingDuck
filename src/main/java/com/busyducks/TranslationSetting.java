@@ -9,18 +9,39 @@ import java.util.stream.Collectors;
 
 /**
  * Created by duckman on 14/11/17.
+ *
+ * Setting for translating a file.
  */
 public class TranslationSetting
 {
+    /**
+     * A Pattern for identifying bundles. Use $FILE_LANG as the language macro.
+     * @parameter
+     * @required
+     */
     @Parameter(property = "bundlePattern")
     String bundlePattern;
 
+    /**
+     * True if existing keys should be replaced, default false.
+     * @parameter
+     */
     @Parameter(property = "replaceExistingKeys")
     boolean replaceExistingKeys;
 
+    /**
+     * Source language (file which holds default text).
+     * @parameter
+     * @required
+     */
     @Parameter(property = "sourceLang")
     String sourceLang;
 
+    /**
+     * Languages to translate into.
+     * @parameter
+     * @required
+     */
     @Parameter(property = "destLangs")
     String destLangs;
 
@@ -29,20 +50,24 @@ public class TranslationSetting
     public TranslationSetting() {
     }
 
-    public void doTranslations(MyMojo.DO_TRANS translate) throws MojoExecutionException
+    /**
+     * Does the translations.
+     * @param translate Delegation of actual translation.
+     * @throws MojoExecutionException
+     */
+    public void doTranslations(SpeakingDuckMojo.DO_TRANS translate) throws MojoExecutionException
     {
-
+        // Sanitise input
         if(!isValidLanguageToken(sourceLang)) {
             throw new MojoExecutionException("sourceLang must look like: en:en");
         }
 
-        String resolvedSourceBundle = bundlePattern.replace(MyMojo.fileToken, getFileToken(sourceLang));
+        String resolvedSourceBundle = bundlePattern.replace(SpeakingDuckMojo.fileToken, getFileToken(sourceLang));
         if(!fileExists(resolvedSourceBundle)) {
             throw new MojoExecutionException("Can't find the source bundle: " + resolvedSourceBundle);
         }
 
-
-
+        // load source input.
         try(FileInputStream in  = new FileInputStream(resolvedSourceBundle)) {
             // get destination languages
             List<String> destTokens = Arrays.stream(destLangs.split(","))
@@ -58,7 +83,7 @@ public class TranslationSetting
             // a list of destination file names
             List<String> otherFiles = destTokens.stream()
                     .map(TranslationSetting::getFileToken)
-                    .map(S-> bundlePattern.replace(MyMojo.fileToken, S))
+                    .map(S-> bundlePattern.replace(SpeakingDuckMojo.fileToken, S))
                     .collect(Collectors.toList());
 
             // a list of language tokens to give to the translator
@@ -70,7 +95,7 @@ public class TranslationSetting
                 throw new MojoExecutionException("destLangs must look like: de:de, zh:zh, en:en-uk");
             }
 
-            //load source properties
+            // load source properties
             Properties properties = new Properties();
             properties.load(in);
 
@@ -100,7 +125,7 @@ public class TranslationSetting
 
                         // is there already a translation
                         String translatedValue = destinationProperties.getProperty(key, null);
-                        if(translatedValue == null) {
+                        if((translatedValue == null) || replaceExistingKeys) {
 
                             // do translation, if required.
                             String translation = translate.apply(value, getCallToken(sourceLang), languageToken);

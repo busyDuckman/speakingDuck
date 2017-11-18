@@ -8,7 +8,7 @@ saved to other property files, as per the java resource bundles convention.
 
 ## Getting started in 2 minutes.
  
-### To use translation shell with this plugin, install it first:  
+### 1) To use translation shell with this plugin, install it first:  
 
 EG. for ubuntu:  
 
@@ -17,7 +17,7 @@ EG. for ubuntu:
     chmod +x ./trans  
     sudo mv ./trans /usr/bin/  
 
-### Add the following plugin toe pom.xml and configure accordingly.
+### 2) Add the following plugin to pom.xml and configure accordingly.
 
     <build>
         <plugins>
@@ -44,7 +44,7 @@ EG. for ubuntu:
         </plugins>
     </build>
 
-### Create the source language file 
+### 3) Create the source language file 
 We will use english, so create:  
   - /src/main/resources/generalText_en.properties
   
@@ -53,7 +53,7 @@ Add the following:
     HELLO=Hello world  
     MSG_PAKTOC=Press any key to continue.  
     
-### Create the following files
+### 4) Create the following files
     /src/main/resources/generalText_de.properties  
     /src/main/resources/generalText_hi.properties  
     /src/main/resources/generalText_ja.properties  
@@ -67,12 +67,12 @@ Add the following:
     /src/main/resources/generalText_ko.properties  
     /src/main/resources/generalText_zh.properties
 
-## Compile
+## 5) Compile
 
 mvn compile
 
 
-You will see the translations going by, and it will take some time to 
+You will see the translations going by and it will take some time to 
 complete. However once the translation is done, it is not re-translated 
 next time you compile. In this way ou are only translating the new 
 text you created since the last compile.
@@ -97,7 +97,7 @@ Example output:
         -> saved: ./src/main/resources/generalText_de.properties
 
 
-# Enjoy
+# 6) Enjoy
 Previously, if you worked in english your software had an audience of 335 million people. 
 Now you can reach 3.4+ billion people. Not bad for 2 minutes work. If you have not used 
 resource bundles before, read [this guide](https://docs.oracle.com/javase/tutorial/i18n/intro/steps.html).

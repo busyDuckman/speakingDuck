@@ -6,9 +6,12 @@ Configures whatever translation SW you have
 to translate text phrases in Java property files. Translations are 
 saved to other property files, as per the java resource bundles convention.
 
+Speaking duck is in the [Maven Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22speakingDuck-maven-plugin%22) 
+so all that is required to install it, is a reference in your pom.xml. See below.
+
 ## Getting started in 2 minutes.
  
-### 1) To use translation shell with this plugin, install it first:  
+### 1) To use 'translation shell' with this plugin, install it first:  
 
 EG. for ubuntu:  
 
@@ -16,6 +19,8 @@ EG. for ubuntu:
     wget git.io/trans  
     chmod +x ./trans  
     sudo mv ./trans /usr/bin/  
+
+This will make the command __trans__ available, which we will now reference in our pom.xml. 
 
 ### 2) Add the following plugin to pom.xml and configure accordingly.
 
@@ -44,10 +49,9 @@ EG. for ubuntu:
         </plugins>
     </build>
 
-You will need one \<translation\>  section per file.
-
-The following macros are applicable to \<bundlePattern\>
-   - __$FILE_LANG__  = The left side of the de:de pair(s) used in \<sourceLang\> and \<destLangs\>  
+__2.1) More detail about \<call\>__   
+The \<call\> section is where we configure the call to the translation software (Translation 
+shell, in this example).   
    
 The following macros are applicable to \<call\>  
   -  __$CALL_LANG__ = The left side of the de:de pair(s) used in \<sourceLang\> and \<destLangs\>  
@@ -56,6 +60,13 @@ The following macros are applicable to \<call\>
   -  __$TEXT_QUOTED__ = "Text to be "translated""
   
 __NB:__ Quoting the text ($TEXT_QUOTED) works for some translators, but produces quoted output in others.
+
+__2.2) More detail about \<translation\>__   
+You will need one \<translation\>  section per resource bundle.
+
+The following macros are applicable to \<bundlePattern\>
+   - __$FILE_LANG__  = The left side of the de:de pair(s) used in \<sourceLang\> and \<destLangs\>  
+
 
 ### 3) Create the source language file 
 We will use english, so create:  

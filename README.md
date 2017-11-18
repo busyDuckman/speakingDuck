@@ -44,6 +44,19 @@ EG. for ubuntu:
         </plugins>
     </build>
 
+You will need one \<translation\>  section per file.
+
+The following macros are applicable to \<bundlePattern\>
+   - __$FILE_LANG__  = The left side of the de:de pair(s) used in \<sourceLang\> and \<destLangs\>  
+   
+The following macros are applicable to \<call\>  
+  -  __$CALL_LANG__ = The left side of the de:de pair(s) used in \<sourceLang\> and \<destLangs\>  
+  -  __$TEXT__ = eg: Text to be "translated"
+  -  __$TEXT_ESCAPED_QUOTED__ = "Text to be \\"translated\\"""
+  -  __$TEXT_QUOTED__ = "Text to be "translated""
+  
+__NB:__ Quoting the text ($TEXT_QUOTED) works for some translators, but produces quoted output in others.
+
 ### 3) Create the source language file 
 We will use english, so create:  
   - /src/main/resources/generalText_en.properties
@@ -97,7 +110,7 @@ Example output:
         -> saved: ./src/main/resources/generalText_de.properties
 
 
-# 6) Enjoy
+## 6) Enjoy
 Previously, if you worked in english your software had an audience of 335 million people. 
 Now you can reach 3.4+ billion people. Not bad for 2 minutes work. If you have not used 
 resource bundles before, read [this guide](https://docs.oracle.com/javase/tutorial/i18n/intro/steps.html).

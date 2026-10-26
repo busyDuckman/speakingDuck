@@ -1,12 +1,24 @@
 # speakingDuck
+
+[![No Maintenance Intended](https://unmaintained.tech/badge.svg)](https://unmaintained.tech/)
+[![Maven Central](https://img.shields.io/maven-central/v/com.busyducks/speakingDuck-maven-plugin.svg)](https://central.sonatype.com/artifact/com.busyducks/speakingDuck-maven-plugin)
+[![License: LGPL v2.1](https://img.shields.io/badge/License-LGPL_v2.1-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
+[![Java](https://img.shields.io/badge/Java-1.8%2B-orange.svg)](https://www.oracle.com/java/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/busyDuckman/speakingDuck.svg)](https://github.com/busyDuckman/speakingDuck/commits/master)
+
 A maven translation (i18n) plugin for java properties files.
+
+
+> [!WARNING]
+> This project is archived and unmaintained. It hasn't been updated since 2017
+> and shouldn't be used in new projects.
 
 Configures whatever translation SW you have 
 (eg [translation shell](https://github.com/soimort/translate-shell)) 
 to translate text phrases in Java property files. Translations are 
 saved to other property files, as per the java resource bundles convention.
 
-Speaking duck is in the [Maven Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22speakingDuck-maven-plugin%22) 
+Speaking duck is in the [Maven Repository](https://central.sonatype.com/artifact/com.busyducks/speakingDuck-maven-plugin) 
 so all that is required to install it, is a reference in your pom.xml. See below.
 
 ## Getting started in 2 minutes.
